@@ -1,0 +1,14 @@
+.emp-image{
+   
+    /* border-color: green;
+    border-style: solid; */
+    display: flex;
+    
+}
+.image{
+    width: 70%;
+    height: 70%; 
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-top: 30px;
+}

@@ -1,0 +1,7 @@
+.personal-info{
+    height: 200px;
+    width: 100%;
+    /* border-color: blue;
+    border-style: dashed; */
+    display: flex;
+}

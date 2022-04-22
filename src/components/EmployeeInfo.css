@@ -1,0 +1,16 @@
+.emp-info{
+    display: flex;
+    justify-content: flex-start;
+    /* border-color: green;
+    border-style: solid; */
+    margin-left: 10px;
+    margin-top: 30px;
+    flex-direction: column;
+}
+.info{
+flex-direction: column;}
+.info2{
+    flex-direction: column;
+    border-top: dashed;
+    border-color: grey;
+}
