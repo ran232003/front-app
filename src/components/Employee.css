@@ -1,0 +1,40 @@
+.emp {
+    
+    margin: 0 auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 40rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 6px;
+    background: white;
+    margin-top: 5px;
+    display: flex;
+
+    
+  }
+  .name{
+    flex: 1;          /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-right: 1px dashed gray;
+  }
+  .pos{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px dashed gray;
+  }
+  .view{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    color: blue;
+}
+.view:hover {
+    color: red;
+  }
