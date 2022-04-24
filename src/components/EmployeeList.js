@@ -3,17 +3,7 @@ import { useSelector } from "react-redux";
 import Employee from "./Employee";
 
 const EmployeeList = ()=>{
-    const employees = [{
-        name:"ran",
-        lastName:"far",
-        position:"software developer",
-        id:1
-    },{
-        name:"ran",
-        lastName:"far",
-        position:"software developer",
-        id:2
-    }]
+  
     const employeeArray = useSelector((state)=>{
         return state.employee;
     }) 

@@ -10,7 +10,15 @@
 .info{
 flex-direction: column;}
 .info2{
-    flex-direction: column;
+    /* flex-direction: column; */
     border-top: dashed;
     border-color: grey;
+    
 }
+
+@media screen and (max-width: 600px) {
+    .info2 {
+        width: 100%;
+    }
+    
+  }

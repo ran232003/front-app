@@ -7,10 +7,12 @@ import EmployeePage from './pages/EmployeePage';
 import { useDispatch } from 'react-redux';
 import { employeeActions } from './store/employeeSlice';
 import {employeesArray} from "./dummyEmployees"
+import {employeesArrayTasks} from "./dummyEmployeesTaks"
+
 function App() {
   const dispatch = useDispatch();
 
-  dispatch(employeeActions.setEmployees(employeesArray))
+  dispatch(employeeActions.setEmployees(employeesArrayTasks))
   return (
     <div className = "back">
       <NavigationBar/>

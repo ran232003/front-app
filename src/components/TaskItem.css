@@ -1,0 +1,10 @@
+.text{
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1; 
+}
+.date{
+    display: flex;
+    justify-content: flex-end;
+    flex: 1; 
+}

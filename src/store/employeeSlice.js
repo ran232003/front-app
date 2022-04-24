@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const employeeSlice = createSlice({
     name:"employee",
-    initialState:{employees:[]},
+    initialState:{employees:[],employeesTasks:[]},
     reducers:{
         setEmployees(state,action){
             state.employees = action.payload
