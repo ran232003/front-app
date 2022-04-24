@@ -10,67 +10,31 @@ import {
     DayPickerSingleDateController
   } from "react-dates";
 import moment from 'moment'
+import DatePicker from "./DatePicker";
 const SubItem = (props)=>{
 const {position,id,name} = props;
-console.log(position,id,name)
 const[show,setShow] = useState(false)
 const[task, setTask] = useState();
 const[dateToDb, setDateToDb] = useState(null);
-const[dateChange,setDateChange] = useState(moment())
-const [dateObject,setDate] = useState({
-    startDate: moment(),
-    endDate: moment(),
-    focusedInput: null,
-    focused: null,
-    date: moment()
-})
-const onDateChange = (date1) => {
-    // console.log("inside set",date1)
-    // setDate(()=>{
-    //     console.log("inside",date1)
-    //     return {...dateObject,date:date1,endDate:date1,startDate:date1}
-    // });
-    setDateChange(date1);
-    let myDate =  date1.toDate();
-    myDate = myDate.getFullYear() + "-" +months[myDate.getMonth()] + "-" + myDate.getDate();
-    setDateToDb(myDate);
-  };
-console.log("check",dateToDb);
-const  onFocusChange = () => {
-    // Force the focused states to always be truthy so that date is always selectable
-    setDate(()=>{
-        return {...dateObject,focused:true}
-    });
-  };
 
- const focusedInput = focusedInput => {
-    console.log(`focusedInput`, focusedInput);
-    setDate({ focusedInput });
-    setDate(()=>{
-        return {...dateObject,focusedInput:focusedInput}
-    });
-  };
+const handleDate = (newDate)=>{
+    setDateToDb(newDate)
+}
 const handleModal = ()=>{
     setShow(true)
-    console.log("to show Modal")
 }
 const handleChange = ()=>{
-    console.log("change");
 }
 const handleInput = (rep)=>{
-    console.log(rep);
     setTask(rep);
 }
 const handleModalClose = ()=>{
-    console.log("close")
     setShow(false)
 }
 const SubmitReport = ()=>{
-    console.log("sub",task)
     handleModalClose();
 }
 const setState = ()=>{
-    console.log("set")
 }
 
     return(
@@ -100,11 +64,10 @@ const setState = ()=>{
                     type = "text"
                     
                     />
-                    <DayPickerSingleDateController
-          onDateChange={onDateChange}
-          onFocusChange={onFocusChange}
-          focused={dateObject.focused}
-          date={dateChange}
+                    
+        <DatePicker
+        handleDate = {handleDate}
+        lable = "Choose Date"
         />
                     
                 </Modal.Body>
