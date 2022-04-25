@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import NavigationBar from './components/NavigationBar';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Employess from './pages/Employess';
 import EmployeePage from './pages/EmployeePage';
 import { useDispatch, useSelector } from 'react-redux';
@@ -34,6 +34,7 @@ function App() {
       <Route exact  path = "/employees/employee-page/:id" element = {<EmployeePage/>}>
 
       </Route>
+      <Route path="/" element={<Employess replace to="/employees" />} />
       </Routes>
     </div>
   );
