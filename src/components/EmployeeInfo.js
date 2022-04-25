@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { assignReport } from "../api/api";
+import { employeeActions } from "../store/employeeSlice";
+import DatePicker from "./DatePicker";
 import "./EmployeeInfo.css"
 import FooterModal from "./FooterModal";
 import Input from "./Input";
@@ -7,9 +11,18 @@ import MyModal from "./MyModal";
 import PopupModal from "./PopupModal";
 const EmployeeInfo = (props)=>{
     const {name,lastName,position,manager,managerId} = props;
+    const employeeState = useSelector((state)=>{
+        return state.employee;
+    })
+    console.log("employeeState",employeeState);
     const[report, setReport] = useState();
     const fullName = name + " " + lastName;
     const[show,setShow] = useState(false)
+    const[dateToDb, setDateToDb] = useState(null);
+    const dispatch = useDispatch();
+const handleDate = (newDate)=>{
+    setDateToDb(newDate)
+}
     
     const handleModal = ()=>{
         setShow(true)
@@ -26,6 +39,9 @@ const EmployeeInfo = (props)=>{
     const SubmitReport = ()=>{
         console.log("sub",report)
         handleModalClose();
+        assignReport(managerId,dateToDb,report)
+        dispatch(employeeActions.assignReport({id:managerId,startDate:dateToDb,task:report}))
+        //window.location.reload(false);
     }
     console.log("show",show);
     return(
@@ -45,12 +61,7 @@ const EmployeeInfo = (props)=>{
                    <Button onClick = {handleModal} size="sm">Report</Button>
                </span>
             </div>
-            {/* <MyModal
-            toShow = {show}
-            handleModalClose = {handleModalClose}
-            numOfInputs = {[{label:"Report",type:"text"}]}
-            modalTitle = "Report To Manager"
-            /> */}
+           
             <Modal
              show={show}
              onHide={handleModalClose}
@@ -67,6 +78,10 @@ const EmployeeInfo = (props)=>{
                     type = "text"
                     
                     />
+                    <DatePicker
+        handleDate = {handleDate}
+        lable = "Choose Date"
+        />
                 </Modal.Body>
                 <FooterModal
                 handleClose = {handleModalClose}

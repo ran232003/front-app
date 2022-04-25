@@ -16,8 +16,10 @@ const EmploeeTasks = (props)=>{
             {tasks.map((task)=>{
                 return(
                     <TaskItem
-                    text = {task.text}
-                    date = {task.date}
+                    text = {task.task}
+                    date = {task.startDate}
+                    
+                    endDate = {task.endDate}
                     />
                 )
             })}

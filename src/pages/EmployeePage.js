@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import EmployeeImage from "../components/EmploeeImage";
@@ -15,9 +15,11 @@ const EmployeePage = ()=>{
     const employees = useSelector((state)=>{
        return state.employee;
     })
-    const emp = employees.employees.find((emp)=>{return emp.id == id})
+    const emp = employees.employees.find((emp)=>{return emp._id == id})
     //const emp = employeesArrayTasks.find((emp)=>{return emp.id == id})
     console.log(emp,id)
+    let workerTag;
+    
     if(typeof emp === "undefined"){
         return (
             <div>
@@ -29,6 +31,33 @@ const EmployeePage = ()=>{
             </div>)
     }
     else{
+        console.log(emp.isManager)
+        if(emp.isManager === true){
+            console.log("inside true")
+            workerTag = <div>
+            <div>
+            <b> Reports:</b>
+         </div>
+         <div>
+          <EmploeeTasks
+          tasks = {emp.tasks}
+          />
+          </div> 
+          </div>}
+          else{
+            workerTag = <div>
+            <div>
+            <b> Reports:</b>
+         </div>
+         <div>
+          <EmploeeTasks
+          tasks = {emp.tasks}
+          />
+          </div> 
+          </div>
+          }
+        }
+       
         return(
             <div className = "main">
                 <div className = "personal-info">
@@ -45,14 +74,8 @@ const EmployeePage = ()=>{
                 
 
                </div>
-               <div>
-                  <b> Tasks:</b>
-               </div>
-               <div>
-                <EmploeeTasks
-                tasks = {emp.tasks}
-                />
-                </div>
+                {workerTag}
+               
                 {typeof emp.subordinates === "undefined"?null:
                 <div>
                      <div style = {{marginTop:"10px"}}>
@@ -70,6 +93,6 @@ const EmployeePage = ()=>{
         )
     }
    
-}
+
 
 export default EmployeePage

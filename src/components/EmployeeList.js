@@ -12,8 +12,8 @@ const EmployeeList = ()=>{
             {employeeArray.employees.map((emp)=>{
                 return(
                     <Employee
-                    key = {emp.id}
-                    id = {emp.id}
+                    key = {emp._id}
+                    id = {emp._id}
                     name = {emp.name}
                     lastName = {emp.lastName}
                     position = {emp.position}

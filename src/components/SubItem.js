@@ -11,14 +11,25 @@ import {
   } from "react-dates";
 import moment from 'moment'
 import DatePicker from "./DatePicker";
+import { assignTask } from "../api/api";
+import { useDispatch, useSelector } from "react-redux";
+import { employeeActions } from "../store/employeeSlice";
 const SubItem = (props)=>{
 const {position,id,name} = props;
 const[show,setShow] = useState(false)
 const[task, setTask] = useState();
 const[dateToDb, setDateToDb] = useState(null);
-
+const[dateToDb2, setDateToDb2] = useState(null);
 const handleDate = (newDate)=>{
     setDateToDb(newDate)
+}
+const emp = useSelector((state)=>{
+    return state.employee;
+})
+const dispatch = useDispatch();
+
+const handleDate2 = (newDate)=>{
+    setDateToDb2(newDate)
 }
 const handleModal = ()=>{
     setShow(true)
@@ -31,9 +42,15 @@ const handleInput = (rep)=>{
 const handleModalClose = ()=>{
     setShow(false)
 }
-const SubmitReport = ()=>{
+const SubmitReport = async()=>{
     handleModalClose();
+   await assignTask(id,dateToDb,dateToDb2,task)
+   dispatch(employeeActions.assignTask({id:id,startDate:dateToDb,endDate:dateToDb2,task:task}))
+   //window.location.reload(false);
 }
+useEffect(()=>{
+    console.log("effect",emp);
+},[show])
 const setState = ()=>{
 }
 
@@ -67,7 +84,11 @@ const setState = ()=>{
                     
         <DatePicker
         handleDate = {handleDate}
-        lable = "Choose Date"
+        lable = "Start Date"
+        />
+        <DatePicker
+        handleDate = {handleDate2}
+        lable = "End Date"
         />
                     
                 </Modal.Body>

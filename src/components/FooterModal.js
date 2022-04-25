@@ -2,7 +2,14 @@ import React from "react";
 import { Button, Modal } from "react-bootstrap";
 
 const FooterModal = (props)=>{
-    const{handleClose,SubmitReport} = props;
+    //const{handleClose,SubmitReport} = props;
+    const SubmitReport = ()=>{
+        props.SubmitReport();
+    }
+    const handleClose = ()=>{
+        props.handleClose();
+    }
+    console.log("close")
     return(
     <div>
     <Modal.Footer>
