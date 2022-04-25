@@ -49,7 +49,6 @@ const SubmitReport = async()=>{
    //window.location.reload(false);
 }
 useEffect(()=>{
-    console.log("effect",emp);
 },[show])
 const setState = ()=>{
 }

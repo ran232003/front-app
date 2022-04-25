@@ -17,7 +17,6 @@ const EmployeePage = ()=>{
     })
     const emp = employees.employees.find((emp)=>{return emp._id == id})
     //const emp = employeesArrayTasks.find((emp)=>{return emp.id == id})
-    console.log(emp,id)
     let workerTag;
     
     if(typeof emp === "undefined"){
@@ -31,9 +30,7 @@ const EmployeePage = ()=>{
             </div>)
     }
     else{
-        console.log(emp.isManager)
         if(emp.isManager === true){
-            console.log("inside true")
             workerTag = <div>
             <div>
             <b> Reports:</b>

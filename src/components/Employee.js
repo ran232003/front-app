@@ -4,7 +4,6 @@ import "./Employee.css"
 const Employee = (props)=>{
     let navigate = useNavigate();
     const handleClick = ()=>{
-        console.log("click");
         navigate(`/employees/employee-page/${id}`)
     }
     const {name,lastName,position,id} = props;

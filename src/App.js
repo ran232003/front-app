@@ -15,18 +15,15 @@ import store from './store';
 function App() {
   const dispatch = useDispatch();
   const emp = useSelector(state=>state.employee.employees);
-  console.log("emp",emp)
   //  store.subscribe();
   const getEmployeesFromDB = async()=>{
     const data = await getEmployees();
-    console.log(data);
     dispatch(employeeActions.setEmployees(data.employees))
   }
   useEffect(()=>{
     getEmployeesFromDB();
   },[])
   //dispatch(employeeActions.setEmployees(employeesArrayTasks))
-  console.log("check");
   return (
     <div className = "back">
       <NavigationBar/>

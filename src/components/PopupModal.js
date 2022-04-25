@@ -5,7 +5,6 @@ import Input from "./Input";
 const PopupModal = (props)=>{
     const{toShow,numOfInputs,modalTitle,test} = props;
     
-  console.log("in modal")
     return(
         <div>
         

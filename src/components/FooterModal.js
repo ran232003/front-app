@@ -9,7 +9,6 @@ const FooterModal = (props)=>{
     const handleClose = ()=>{
         props.handleClose();
     }
-    console.log("close")
     return(
     <div>
     <Modal.Footer>

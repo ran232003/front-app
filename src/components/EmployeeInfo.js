@@ -14,7 +14,6 @@ const EmployeeInfo = (props)=>{
     const employeeState = useSelector((state)=>{
         return state.employee;
     })
-    console.log("employeeState",employeeState);
     const[report, setReport] = useState();
     const fullName = name + " " + lastName;
     const[show,setShow] = useState(false)
@@ -26,24 +25,19 @@ const handleDate = (newDate)=>{
     
     const handleModal = ()=>{
         setShow(true)
-        console.log("to show Modal")
     }
     const handleInput = (rep)=>{
-        console.log(rep);
         setReport(rep);
     }
     const handleModalClose = ()=>{
-        console.log("close")
         setShow(false)
     }
     const SubmitReport = ()=>{
-        console.log("sub",report)
         handleModalClose();
         assignReport(managerId,dateToDb,report)
         dispatch(employeeActions.assignReport({id:managerId,startDate:dateToDb,task:report}))
         //window.location.reload(false);
     }
-    console.log("show",show);
     return(
         <div className = "emp-info">
             <div className = "info">

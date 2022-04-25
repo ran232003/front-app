@@ -15,18 +15,13 @@ const DatePicker = (props)=>{
         date: moment()
     })
     const onDateChange = (date1) => {
-        // console.log("inside set",date1)
-        // setDate(()=>{
-        //     console.log("inside",date1)
-        //     return {...dateObject,date:date1,endDate:date1,startDate:date1}
-        // });
+       
         setDateChange(date1);
         let myDate =  date1.toDate();
         myDate = myDate.getFullYear() + "-" +months[myDate.getMonth()] + "-" + myDate.getDate();
         setDateToDb(myDate);
         props.handleDate(myDate)
       };
-    console.log("check",dateToDb);
     const  onFocusChange = () => {
         // Force the focused states to always be truthy so that date is always selectable
         setDate(()=>{
@@ -35,7 +30,6 @@ const DatePicker = (props)=>{
       };
     
      const focusedInput = focusedInput => {
-        console.log(`focusedInput`, focusedInput);
         setDate({ focusedInput });
         setDate(()=>{
             return {...dateObject,focusedInput:focusedInput}
