@@ -1,8 +1,12 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 const FooterModal = (props)=>{
     //const{handleClose,SubmitReport} = props;
+    const valid = useSelector((state)=>{
+        return state.employee.inputValid;
+    })
     const SubmitReport = ()=>{
         props.SubmitReport();
     }
@@ -15,7 +19,7 @@ const FooterModal = (props)=>{
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={SubmitReport}>Save</Button>
+          <Button disabled={valid} variant="primary" onClick={SubmitReport}>Save</Button>
         </Modal.Footer>
         </div>
     )

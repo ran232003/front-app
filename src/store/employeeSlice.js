@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const employeeSlice = createSlice({
     name:"employee",
-    initialState:{employees:[]},
+    initialState:{employees:[],inputValid:true},
     reducers:{
         setEmployees(state,action){
             state.employees = action.payload
@@ -23,6 +23,9 @@ const employeeSlice = createSlice({
                     emp.tasks.push({task:task,startDate:startDate})
                 }
             })
+        },
+        setinputValid(state,action){
+            state.inputValid = action.payload
         }
     
     }
