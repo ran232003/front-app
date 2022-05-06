@@ -1,4 +1,4 @@
-
+const { validationResult } = require('express-validator');
 const Employee = require("../models/employee-model");
 const getEmployees = async(req,res,next)=>{
    
@@ -8,7 +8,13 @@ const getEmployees = async(req,res,next)=>{
 }
 const addEmployees = async(req,res,next)=>{
     let requestBody = req.body;
-    res.json({msg:"ok"})
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+       
+        console.log("error",errors)
+        return res.json({msg:"error"})
+    }
+    
     const newEmployee = new Employee({
         name:requestBody.name,
         lastName:requestBody.lastName,
